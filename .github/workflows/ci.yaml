@@ -3,8 +3,8 @@ name: ci
 on:
   push:
     branches:
-      - 'main'
-      - 'dependabot*'
+      - "main"
+      - "dependabot*"
 
 jobs:
   docker:
@@ -27,8 +27,5 @@ jobs:
         with:
           push: push
           tags: quartile/basepython:alpine
-        env: 
-          if github.ref == 'refs/heads/main':
-            push: true
-          else:
-            push: false
+        env:
+          push: ${{ github.ref == 'refs/heads/main' }}
