@@ -43,7 +43,7 @@ RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
 # Remove download file
 RUN rm -rf ms*
 # Update PIP
-RUN pip install -U setuptools pip pymssql
+RUN pip install -U setuptools pip
 # Copy file
 COPY requirements.txt .
 # Install pip requirements

@@ -12,7 +12,7 @@ guvicorn-logger==0.1.13
 httpx==0.23.1
 humps==0.2.2
 pyjwt==2.6.0
-pymssql==2.2.7
+pymssql==2.2.1
 pyodbc==4.0.35
 python-dotenv==0.21.0
 sqlalchemy==1.4.44
