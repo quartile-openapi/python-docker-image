@@ -14,13 +14,10 @@ RUN apk add \
     openblas-dev \
     openssl-dev \
     unixodbc \
-    unixodbc-dev \
-    krb5-libs \
-    krb5
+    unixodbc-dev
 
 RUN apk add git cmake
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
-RUN pip install pandas
 # REMOVE CACHE
 RUN rm -rf /var/cache/apk/*
 # UPDATE APT-GET
