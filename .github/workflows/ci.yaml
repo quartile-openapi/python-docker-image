@@ -23,9 +23,15 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
+        if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v3
         with:
-          push: $push
+          push: true
           tags: quartile/basepython:alpine
-        env:
-          push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build only
+        if: github.ref != 'refs/heads/main'
+        uses: docker/build-push-action@v3
+        with:
+          push: false
+          tags: quartile/basepython:alpine
