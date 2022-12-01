@@ -14,7 +14,9 @@ RUN apk add \
     openblas-dev \
     openssl-dev \
     unixodbc \
-    unixodbc-dev
+    unixodbc-dev \
+    krb5-libs \
+    krb5
 
 RUN apk add git cmake
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
@@ -41,7 +43,7 @@ RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
 # Remove download file
 RUN rm -rf ms*
 # Update PIP
-RUN pip install -U setuptools pip
+RUN pip install -U setuptools pip pymssql
 # Copy file
 COPY requirements.txt .
 # Install pip requirements
