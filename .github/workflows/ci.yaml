@@ -4,15 +4,13 @@ on:
   push:
     branches:
       - 'main'
-      - 'dependabot'
-
+      - 'dependabot*'
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
       - name: Set up Docker Buildx
@@ -25,8 +23,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
-        if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v3
         with:
-          push: true
+          push: push
           tags: quartile/basepython:alpine
+        env: 
+          push: github.ref == 'refs/heads/main'
