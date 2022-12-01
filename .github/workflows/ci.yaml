@@ -28,4 +28,7 @@ jobs:
           push: push
           tags: quartile/basepython:alpine
         env: 
-          push: github.ref == 'refs/heads/main'
+          if github.ref == 'refs/heads/main':
+            push: true
+          else:
+            push: false
