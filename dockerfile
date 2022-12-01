@@ -1,6 +1,6 @@
-FROM python:3.11.0-alpine3.17
+FROM docker.io/quartile/basepython:alpine
 # INSTALL DEPENDENCIES
-RUN apk update && apk upgrade
+RUN apk update
 RUN apk add \
     build-base \
     freetds-dev \
