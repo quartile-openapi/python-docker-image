@@ -1,4 +1,4 @@
-FROM docker.io/quartile/basepython:alpine
+FROM docker.io/quartile/basepython:alpine@sha256:3bc1e25094f44a4445efc1a459a2035aa4e678756cd84f8835d1148ca7751182
 # INSTALL DEPENDENCIES
 RUN apk update
 RUN apk add \
