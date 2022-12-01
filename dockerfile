@@ -1,7 +1,7 @@
 FROM docker.io/quartile/basepython:alpine
 # INSTALL DEPENDENCIES
 RUN apk update && apk upgrade
-RUN apk --no-cache --update-cache add \
+RUN apk add \
     build-base \
     freetds-dev \
     g++ \
