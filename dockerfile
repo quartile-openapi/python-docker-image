@@ -1,4 +1,4 @@
-FROM docker.io/quartile/basepython:alpine
+FROM python:3.11.0-alpine3.17
 # INSTALL DEPENDENCIES
 RUN apk update && apk upgrade
 RUN apk add \
