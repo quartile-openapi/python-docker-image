@@ -6,6 +6,7 @@ RUN apk add \
     freetds-dev \
     g++ \
     gcc \
+    tar \
     gfortran \
     gnupg \
     libffi-dev \
