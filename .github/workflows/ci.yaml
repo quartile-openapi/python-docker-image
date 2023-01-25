@@ -5,6 +5,12 @@ on:
     branches:
       - "main"
       - "dependabot*"
+      - "release/*"
+  pull_request:
+    branches:
+      - "main"
+      - "dependabot*"
+      - "release/*"
 
 jobs:
   docker:
