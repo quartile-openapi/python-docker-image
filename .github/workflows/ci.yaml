@@ -22,16 +22,23 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: production - build and push
         if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: quartile/basepython:alpine
+          tags: quartile/basepython:latest
 
-      - name: Build only
-        if: github.ref != 'refs/heads/main'
+      - name: release - build and push
+        if: contains(github.ref, 'release')
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: quartile/basepython:release
+
+      - name: build only
+        if: github.ref != 'refs/heads/main' && contains(github.ref, 'release') != true
         uses: docker/build-push-action@v3
         with:
           push: false
-          tags: quartile/basepython:alpine
+          tags: quartile/basepython:test
