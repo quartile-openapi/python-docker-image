@@ -16,7 +16,7 @@ pyjwt==2.6.0
 pymssql==2.2.1
 pyodbc==4.0.35
 python-dotenv==0.21.0
-sqlalchemy==1.4.44
+sqlalchemy==2.0.3
 uvicorn==0.19.0
 xlrd==2.0.1
 xlsxwriter==3.0.3
