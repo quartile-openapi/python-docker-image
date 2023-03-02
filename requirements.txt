@@ -56,4 +56,4 @@ animal-case==0.5.1
 pyodbc==4.0.35
 pymssql==2.2.7
 sqlalchemy==1.4.43
-humps==0.2.2
+#humps==0.2.2
