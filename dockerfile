@@ -1,6 +1,6 @@
 FROM python:latest
 # Install system dependencies
-RUN apt update && apt upgrade && apt install unixodbc-dev curl gnupg -y
+RUN apt update && apt upgrade -y && apt install unixodbc-dev curl gnupg -y
 # odbc driver
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list
