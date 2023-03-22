@@ -24,6 +24,7 @@ msal==1.21.0
 msrest==0.7.1
 numpy==1.24.2
 oauthlib==3.2.2
+opencensus-ext-azure==1.1.9
 orjson==3.8.6
 pandas==1.5.3
 polars[all]==0.15.17
@@ -34,6 +35,7 @@ pydantic[all]==1.10.5
 Pygments==2.14.0
 pyhumps==3.8.0
 pyjwt==2.6.0
+pymongo==4.3.3
 pysqlx-engine==0.2.15
 python-dateutil==2.8.2
 python-dotenv==0.21.1
