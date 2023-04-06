@@ -66,7 +66,7 @@ msrest = "0.7.1"
 numpy = "1.24.2"
 oauthlib = "3.2.2"
 opencensus-ext-azure = "^1.1.9"
-orjson = "3.8.6"
+orjson = "3.8.9"
 pandas = "1.5.3"
 polars = {version = "^0.16.18", extras = ["all"]}
 portalocker = "2.7.0"
