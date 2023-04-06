@@ -1,5 +1,5 @@
 anyio==3.6.2
-asgi-correlation-id==3.2.2
+asgi-correlation-id==4.1.0
 azure-common==1.1.28
 azure-core==1.26.3
 azure-identity==1.12.0

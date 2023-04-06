@@ -1,6 +1,6 @@
 animal-case==0.5.1
 anyio==3.6.2
-asgi-correlation-id==3.2.1
+asgi-correlation-id==4.1.0
 azure-common==1.1.28
 azure-core==1.26.2
 azure-identity==1.12.0
