@@ -68,7 +68,7 @@ oauthlib = "3.2.2"
 opencensus-ext-azure = "^1.1.9"
 orjson = "3.8.9"
 pandas = "1.5.3"
-polars = {version = "^0.16.18", extras = ["all"]}
+polars = {version = "^0.17.0", extras = ["all"]}
 portalocker = "2.7.0"
 psutil = "5.9.4"
 pycparser = "2.21"
