@@ -27,29 +27,22 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-      - name: Install poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: latest
-          virtualenvs-create: true
-          virtualenvs-in-project: true
 
-      - name: production - build and push
+      - name: Production - Build and Push
         if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: quartile/basepython:latest
 
-      - name: release - build and push
+      - name: Release - Build and Push
         if: contains(github.ref, 'release')
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: quartile/basepython:release
 
-      - name: build only
+      - name: Build only
         if: github.ref != 'refs/heads/main' && contains(github.ref, 'release') != true
         uses: docker/build-push-action@v3
         with:
