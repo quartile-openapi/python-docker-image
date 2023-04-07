@@ -119,7 +119,7 @@ twine = "^4.0.2"
 animal-case = "^0.5.1"
 pyodbc = "^4.0.35"
 pymssql = "^2.2.7"
-sqlalchemy = "1.4.43"
+sqlalchemy = "2.0.9"
 
 [tool.coverage.run]
 disable_warnings = ["couldnt-parse"]
