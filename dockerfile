@@ -12,13 +12,12 @@ RUN apt purge curl gnupg freetds-dev libssl-dev -y
 ENV PYTHONUNBUFFERED=1
 ENV PIP_DEFAULT_TIMEOUT=100
 # Update PIP
-RUN python -m pip install -U setuptools pip pipx
+RUN python -m pip install -U setuptools pip
 # Copy poetry files
 COPY poetry.lock .
 COPY pyproject.toml .
 # Install poetry
-RUN pipx install poetry
-RUN source $HOME/.poetry/env
+RUN pip install poetry
 # Create requirements.txt
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes --with others
 # Install pip requirements
