@@ -18,6 +18,7 @@ COPY poetry.lock .
 COPY pyproject.toml .
 # Install poetry
 RUN pipx install poetry
+RUN pipx ensurepath
 # Create requirements.txt
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes --with others
 # Install pip requirements
