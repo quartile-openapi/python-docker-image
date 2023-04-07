@@ -89,7 +89,7 @@ thrift = "0.16.0"
 typing-extensions = "4.5.0"
 uamqp = "1.6.3"
 urllib3 = "1.26.14"
-uvicorn = "0.21"
+uvicorn = "0.21.1"
 xlrd = "2.0.1"
 XlsxWriter = "3.0.3"
 
