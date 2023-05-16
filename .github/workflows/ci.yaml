@@ -5,6 +5,9 @@ on:
     branches:
       - "main"
       - "dependabot*"
+    
+  pull_request:
+    branches:
       - "release/*"
 
 jobs:
