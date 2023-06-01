@@ -21,4 +21,4 @@ RUN pip install poetry
 # Create requirements.txt
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes --with others
 # Install pip requirements
-RUN python -m pip install --upgrade -r requirements.txt
+RUN python -m pip install --upgrade -r requirements.txt && rm requirements.txt
