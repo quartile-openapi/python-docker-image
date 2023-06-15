@@ -43,10 +43,10 @@ jobs:
       - name: Proposal Link - Build and Push
         if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v3
-        file: ./dockerfile.proposal-link
         with:
           push: true
           tags: quartile/basepython:proposal-link
+          file: ./dockerfile.proposal-link
 
       - name: Build only
         if: github.ref != 'refs/heads/main' && contains(github.ref, 'release') != true
