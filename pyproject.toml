@@ -36,7 +36,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.10"
 # installing dependencies when is dev
-anyio = "3.6.2"
+anyio = "3.7.0"
 asgi-correlation-id = "4.1"
 azure-common = "1.1.28"
 azure-core = "1.26.4"
