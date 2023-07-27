@@ -36,8 +36,8 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.10"
 # installing dependencies when is dev
-anyio = "3.6.2"
-asgi-correlation-id = "4.1"
+anyio = "^3.7"
+asgi-correlation-id = "^4.2"
 azure-common = "1.1.28"
 azure-core = "1.26.4"
 azure-identity = "1.12"
@@ -69,11 +69,11 @@ polars = {version = "^0.17.6", extras = ["all"]}
 portalocker = "2.7.0"
 psutil = "5.9.4"
 pycparser = "2.21"
-pydantic = {version = "^1.10.7", extras = ["email"]}
+pydantic = {version = "^1.10", extras = ["email"]}
 pyhumps = "3.8.0"
 pyjwt = "2.6.0"
 pymongo = "^4.3.3"
-pysqlx-engine = "^0.2.19"
+pysqlx-engine = "^0.2.21"
 python-dateutil = "2.8.2"
 python-dotenv = "1"
 pytz = "2023.3"
