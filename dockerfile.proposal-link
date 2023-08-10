@@ -10,10 +10,10 @@ RUN apt install freetds-dev libssl-dev -y
 RUN apt purge curl gnupg freetds-dev libssl-dev -y
 # install libreoffice and test conversion from pptx to pdf
 COPY libreoffice.sh .
-COPY templates.pptx .
+COPY template.pptx .
 RUN chmod +x libreoffice.sh && ./libreoffice.sh && \
     ls -la && sleep 5 && \
-    rm -rf templates.* && rm -rf libreoffice.sh 
+    rm -rf template.* && rm -rf libreoffice.sh 
 
 
 # Env Vars
