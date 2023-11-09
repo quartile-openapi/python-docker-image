@@ -1,9 +1,11 @@
-FROM python:latest
+FROM python:3.11-bookworm
 # Install system dependencies
 RUN apt update && apt upgrade -y && apt install unixodbc-dev curl gnupg -y
 # odbc driver
-RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
+RUN curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
+RUN curl https://packages.microsoft.com/config/debian/12/prod.list | tee /etc/apt/sources.list.d/mssql-release.list
+
 RUN apt update
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
 RUN apt install freetds-dev libssl-dev -y
@@ -17,8 +19,8 @@ RUN python -m pip install -U setuptools pip
 COPY poetry.lock .
 COPY pyproject.toml .
 # Install poetry
-RUN pip install poetry
-# Create requirements.txt
-RUN poetry export -f requirements.txt --output requirements.txt --without-hashes --with others,docker
-# Install pip requirements
-RUN python -m pip install --upgrade -r requirements.txt && rm requirements.txt
+RUN pip install poetry && \
+    poetry export -f requirements.txt --output requirements.txt --without-hashes --with others,docker && \
+    rm -rf poetry.lock pyproject.toml && \
+    python -m pip install --upgrade -r requirements.txt && \
+    rm requirements.txt
