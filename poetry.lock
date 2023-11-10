@@ -1014,14 +1014,14 @@ dev = ["flake8", "markdown", "twine", "wheel"]
 
 [[package]]
 name = "google-api-core"
-version = "2.13.0"
+version = "2.14.0"
 description = "Google API client core library"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "google-api-core-2.13.0.tar.gz", hash = "sha256:abc1da067c9026c6cd15dfbd4f6ad07735a62eeadc541d1cc296314447fc3aad"},
-    {file = "google_api_core-2.13.0-py3-none-any.whl", hash = "sha256:44ed591f6c3a0c1ac7a91867d2b3841f92839f860f3d3fe26c464dbd50f97094"},
+    {file = "google-api-core-2.14.0.tar.gz", hash = "sha256:5368a4502b793d9bbf812a5912e13e4e69f9bd87f6efb508460c43f5bbd1ce41"},
+    {file = "google_api_core-2.14.0-py3-none-any.whl", hash = "sha256:de2fb50ed34d47ddbb2bd2dcf680ee8fead46279f4ed6b16de362aca23a18952"},
 ]
 
 [package.dependencies]
@@ -2531,14 +2531,14 @@ tests = ["pytest (>=5.4.1)", "pytest-cov (>=2.8.1)", "pytest-mypy (>=0.8.0)", "p
 
 [[package]]
 name = "prompt-toolkit"
-version = "3.0.39"
+version = "3.0.40"
 description = "Library for building powerful interactive command lines in Python"
 category = "dev"
 optional = false
 python-versions = ">=3.7.0"
 files = [
-    {file = "prompt_toolkit-3.0.39-py3-none-any.whl", hash = "sha256:9dffbe1d8acf91e3de75f3b544e4842382fc06c6babe903ac9acb74dc6e08d88"},
-    {file = "prompt_toolkit-3.0.39.tar.gz", hash = "sha256:04505ade687dc26dc4284b1ad19a83be2f2afe83e7a828ace0c72f3a1df72aac"},
+    {file = "prompt_toolkit-3.0.40-py3-none-any.whl", hash = "sha256:99ba3dfb23d5b5af89712f89e60a5f3d9b8b67a9482ca377c5771d0e9047a34b"},
+    {file = "prompt_toolkit-3.0.40.tar.gz", hash = "sha256:a371c06bb1d66cd499fecd708e50c0b6ae00acba9822ba33c586e2f16d1b739e"},
 ]
 
 [package.dependencies]
