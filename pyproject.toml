@@ -78,7 +78,7 @@ oauthlib = "3.2.2"
 opencensus-ext-azure = "^1.1.9"
 orjson = "3.8.12"
 pandas = "1.5.3"
-polars = {version = "^0.19.12", extras = ["fsspec", "connectorx", "xlsx2csv", "openpyxl", "timezone"]}
+#polars = {version = "^0.19.12", extras = ["fsspec", "connectorx", "xlsx2csv", "openpyxl", "timezone"]}
 portalocker = "2.7.0"
 psutil = "5.9.4"
 pycparser = "2.21"
