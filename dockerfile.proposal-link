@@ -14,10 +14,10 @@ RUN apt update && apt upgrade -y && \
 # RUN snap install libreoffice
 COPY template.pptx .
 RUN apt install libreoffice -y --fix-missing && \
-    libreoffice --version && \
+    apt update && \
+    libreoffice --version && sleep 5 && \
     libreoffice --headless --invisible --convert-to pdf template.pptx && \
     ls -l && sleep 5 && rm -rf template.*
-#
 # Env Vars
 ENV PYTHONUNBUFFERED=1
 ENV PIP_DEFAULT_TIMEOUT=100
