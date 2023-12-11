@@ -101,10 +101,10 @@ pytest-dotenv = "^0.5.2"
 timebudget = "^0.7.1"
 pytest-asyncio = "^0.23.2"
 
-
+# poetry add --group publish keyring@latest artifacts-keyring@latest twine@latest
 [tool.poetry.group.publish.dependencies]
-keyring = "^24.2.0"
-artifacts-keyring = "^0.3.2"
+keyring = "^24.3.0"
+artifacts-keyring = "^0.3.4"
 twine = "^4.0.2"
 
 

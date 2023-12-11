@@ -19,7 +19,7 @@ COPY poetry.lock .
 COPY pyproject.toml .
 # Install poetry
 RUN pip install poetry && \
-    poetry export -f requirements.txt --output requirements.txt --without-hashes --with others,docker && \
+    poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,publish,others && \
     rm -rf poetry.lock pyproject.toml && \
     python -m pip install --upgrade -r requirements.txt && \
     rm requirements.txt
