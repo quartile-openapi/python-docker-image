@@ -1,33 +1,66 @@
-FROM python:3.11-bookworm
+FROM lscr.io/linuxserver/libreoffice:latest
 # Install system dependencies
-RUN apt update && apt upgrade -y && \
-    apt install unixodbc-dev curl gnupg -y && \ 
-    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg && \
-    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc && \
-    curl https://packages.microsoft.com/config/debian/12/prod.list | tee /etc/apt/sources.list.d/mssql-release.list && \
-    apt update && ACCEPT_EULA=Y apt-get install -y msodbcsql17  && \
-    apt purge unixodbc-dev curl gnupg -y && apt autoremove -y && apt clean && \
-    rm -rf /var/lib/apt/lists/* && rm -rf /tmp/* && rm -rf /var/tmp/* && \
-    apt update && apt full-upgrade -y &&\
-    python -m pip install -U setuptools pip wheel
+RUN apk update
+RUN apk add \
+    build-base \
+    g++ \
+    gfortran \
+    gnupg \
+    libffi-dev \
+    libpng-dev \
+    libsasl \
+    openblas-dev \
+    unixodbc \
+    unixodbc-dev \
+    python3-dev \
+    gcc musl-dev krb5-dev openssl-dev freetds-dev
+
+RUN apk add git cmake
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+# REMOVE CACHE
+RUN rm -rf /var/cache/apk/*
+# UPDATE APT-GET
+RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.8.1.1-1_amd64.apk
+RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.8.1.1-1_amd64.apk
+# (Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
+RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.8.1.1-1_amd64.sig
+RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.8.1.1-1_amd64.sig
+# Add MS keys
+RUN curl https://packages.microsoft.com/keys/microsoft.asc  | gpg --import -
+RUN gpg --verify msodbcsql17_17.8.1.1-1_amd64.sig msodbcsql17_17.8.1.1-1_amd64.apk
+RUN gpg --verify mssql-tools_17.8.1.1-1_amd64.sig mssql-tools_17.8.1.1-1_amd64.apk
+# Install the package(s)
+RUN apk add --allow-untrusted msodbcsql17_17.8.1.1-1_amd64.apk
+RUN apk add --allow-untrusted mssql-tools_17.8.1.1-1_amd64.apk
+
+ARG PYTHON_VERSION='3.11'
+ENV PYENV_ROOT $HOME/.pyenv
+ENV PYTHON_VERSION $PYTHON_VERSION
+ENV PATH $PYENV_ROOT/shims:$PATH:$PYENV_ROOT/bin
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST 1
+# ---- Install pyenv
+RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer \
+    -o pyenv-installer && \
+    /bin/bash pyenv-installer && \
+    rm pyenv-installer
+
+# ---- Install Python
+RUN pyenv install $PYTHON_VERSION
+RUN pyenv global $PYTHON_VERSION
+RUN pyenv rehash
 
 # RUN snap install libreoffice
 COPY template.pptx .
-RUN apt install libreoffice -y --fix-missing && \
-    apt update && \
-    libreoffice --version && sleep 5 && \
+RUN libreoffice --version && sleep 5 && \
     libreoffice --headless --invisible --convert-to pdf template.pptx && \
-    ls -l && sleep 5 && rm -rf template.*
+    ls -l && sleep 30 && rm -rf template.*
 # Env Vars
 ENV PYTHONUNBUFFERED=1
 ENV PIP_DEFAULT_TIMEOUT=100
+RUN pip install --upgrade pip setuptools wheel cython
 
 # Copy poetry files
-COPY poetry.lock .
-COPY pyproject.toml .
+COPY requirements-proposal.txt .
 # Install poetry
-RUN pip install poetry && \
-    poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others && \
-    rm -rf poetry.lock pyproject.toml && \
-    python -m pip install --upgrade -r requirements.txt && \
-    rm requirements.txt
+RUN python -m pip install --upgrade -r requirements-proposal.txt && \
+    rm requirements-proposal.txt
