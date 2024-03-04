@@ -19,6 +19,7 @@ RUN apk add \
     unixodbc-dev
 
 RUN apk add git cmake gnupg curl
+RUN apk add libreoffice-common openjdk8-jre expat --upgrade 
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 # REMOVE CACHE
 RUN rm -rf /var/cache/apk/*
