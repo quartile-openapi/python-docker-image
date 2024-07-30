@@ -56,8 +56,11 @@ RUN pip install -U pip && \
 
 ENV PATH="${PATH}:/root/.poetry/bin"
 
-RUN poetry --version && sleep 10 && \
-    poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others,proposal && \
-    rm -rf poetry.lock pyproject.toml && \
-    python -m pip install --upgrade -r requirements.txt && \
-    rm requirements.txt
+
+RUN export PATH="/root/.local/bin:$PATH"
+RUN /root/.local/bin/poetry --version && sleep 10
+RUN poetry --version && sleep 10
+RUN poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others,proposal
+RUN rm -rf poetry.lock pyproject.toml
+RUN python -m pip install --upgrade -r requirements.txt
+RUN rm requirements.txt
