@@ -54,6 +54,8 @@ RUN pip install --upgrade pip setuptools wheel cython
 RUN pip install -U pip && \
     curl -sSL https://install.python-poetry.org | python -
 
+ENV PATH="${PATH}:/root/.poetry/bin"
+
 RUN poetry --version && sleep 10 && \
     poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others,proposal && \
     rm -rf poetry.lock pyproject.toml && \
