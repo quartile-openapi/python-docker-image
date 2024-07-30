@@ -50,8 +50,10 @@ ENV PYTHONUNBUFFERED=1
 ENV PIP_DEFAULT_TIMEOUT=100
 RUN pip install --upgrade pip setuptools wheel cython
 
-# Copy poetry files
-COPY requirements-proposal.txt .
-# Install poetry
-RUN python -m pip install --upgrade -r requirements-proposal.txt && \
-    rm requirements-proposal.txt
+
+RUN pip install pipx && \
+    pipx install poetry && \
+    poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others,proposal && \
+    rm -rf poetry.lock pyproject.toml && \
+    python -m pip install --upgrade -r requirements.txt && \
+    rm requirements.txt
