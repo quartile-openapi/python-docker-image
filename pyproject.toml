@@ -62,9 +62,11 @@ opencensus-ext-azure = "^1.1.13"
 # poetry add --group dataeng pandas@latest xlrd@latest XlsxWriter@latest numpy@latest
 [tool.poetry.group.dataeng.dependencies]
 pandas = "2.1.4"
+databricks-sql-connector = "^3.3.0"
+
+[tool.poetry.group.excel.dependencies]
 xlrd = "^2.0.1"
 XlsxWriter = "^3.2.0"
-python-dotenv = "^1.0.1"
 
 # poetry add --group web pydantic@latest aiohttp@latest fastapi@latest gunicorn@latest uvicorn@latest jinja2@latest orjson@latest httpx@latest pyhumps@latest requests@latest
 [tool.poetry.group.web.dependencies]
@@ -78,12 +80,12 @@ httpx = "^0.27.0"
 pyhumps = "^3.8.0"
 requests = "^2.32.3"
 uvicorn = "^0.30.1"
-
-# poetry add --group database databricks-sql-connector@latest pymongo@latest pysqlx-engine@latest motor@latest
 idna = "^3.7"
 ujson = "^5.10.0"
+python-dotenv = "^1.0.1"
+
+# poetry add --group database databricks-sql-connector@latest pymongo@latest pysqlx-engine@latest motor@latest
 [tool.poetry.group.database.dependencies]
-databricks-sql-connector = "^3.3.0"
 pymongo = "^4.7.3"
 pysqlx-engine = "^0.2.27"
 motor = "^3.4.0"

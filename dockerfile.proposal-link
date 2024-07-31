@@ -54,7 +54,7 @@ COPY poetry.lock .
 COPY pyproject.toml .
 
 RUN curl -sSL https://install.python-poetry.org | python - && \
-    /root/.local/bin/poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others,proposal && \
+    /root/.local/bin/poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,excel,web,database,others,proposal && \
     rm -rf poetry.lock pyproject.toml && \
     python -m pip install --upgrade -r requirements.txt && \
     rm requirements.txt
