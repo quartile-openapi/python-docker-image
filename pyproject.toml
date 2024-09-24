@@ -71,7 +71,7 @@ XlsxWriter = "^3.2.0"
 # poetry add --group web pydantic@latest aiohttp@latest fastapi@latest gunicorn@latest uvicorn@latest jinja2@latest orjson@latest httpx@latest pyhumps@latest requests@latest
 [tool.poetry.group.web.dependencies]
 pydantic = "2.*"
-aiohttp = "^3.10.5"
+aiohttp = "^3.10.6"
 fastapi = "0.115.*"
 gunicorn = "^23.0.0"
 jinja2 = "^3.1.4"
