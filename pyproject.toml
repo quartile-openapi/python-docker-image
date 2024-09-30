@@ -108,7 +108,7 @@ pytest-asyncio = "^0.24"
 # poetry add --group publish keyring@latest artifacts-keyring@latest twine@latest
 [tool.poetry.group.publish.dependencies]
 keyring = "^25.3.0"
-artifacts-keyring = "^0.3.5"
+artifacts-keyring = "^0.4.0"
 twine = "^5.1.0"
 
 
