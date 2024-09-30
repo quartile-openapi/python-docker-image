@@ -46,16 +46,16 @@ build-backend = "poetry.core.masonry.api"
 
 # poetry add --group azure azure-common@latest azure-core@latest azure-identity@latest azure-keyvault-secrets@latest azure-servicebus@latest azure-storage-blob@latest
 [tool.poetry.group.azure.dependencies]
-azure-common = "^1.1.28"
-azure-core = "^1.31.0"
-azure-identity = "^1.17.1"
-azure-keyvault-secrets = "^4.8.0"
-azure-servicebus = "^7.12.2"
-azure-storage-blob = "^12.22.0"
+azure-common = "1.*"
+azure-core = "1.*"
+azure-identity = "1.*"
+azure-keyvault-secrets = "4.*"
+azure-servicebus = "7.*"
+azure-storage-blob = "12.*"
 
 # poetry add --group logger asgi-correlation-id@latest guvicorn-logger@latest opencensus-ext-azure@latest
 [tool.poetry.group.logger.dependencies]
-asgi-correlation-id = "^4.3.3"
+asgi-correlation-id = "4.3.*"
 guvicorn-logger = "^0.1.17"
 opencensus-ext-azure = "^1.1.13"
 
@@ -79,9 +79,9 @@ orjson = "^3.10.7"
 httpx = "^0.27.2"
 pyhumps = "^3.8.0"
 requests = "^2.32.3"
-uvicorn = "^0.30.6"
+uvicorn = "0.31.*"
 idna = "3.*"
-ujson = "^5.10.0"
+ujson = "5.10.*"
 python-dotenv = "^1.0.1"
 
 # poetry add --group database databricks-sql-connector@latest pymongo@latest pysqlx-engine@latest motor@latest
