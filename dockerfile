@@ -1,7 +1,7 @@
-FROM python:3.11-slim-bullseye
+FROM python:3.13-slim-bullseye
 # Install system dependencies
 RUN apt update && apt upgrade -y && \
-    apt install unixodbc-dev curl gnupg -y && \
+    apt install unixodbc-dev curl gnupg gcc -y && \
     curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc && \
     curl https://packages.microsoft.com/config/debian/11/prod.list | tee /etc/apt/sources.list.d/mssql-release.list && \
     apt update && \
@@ -18,7 +18,7 @@ ENV PIP_DEFAULT_TIMEOUT=100
 COPY poetry.lock .
 COPY pyproject.toml .
 # Install poetry
-RUN pip install poetry && \
+RUN pip install poetry poetry-plugin-export && \
     poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,dataeng,web,database,others,excel && \
     rm -rf poetry.lock pyproject.toml && \
     python -m pip install --upgrade -r requirements.txt && \

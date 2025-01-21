@@ -1,4 +1,4 @@
-FROM python:3.11-alpine3.19
+FROM python:3.13-alpine3.21
 # Install system dependencies
 RUN apk update
 RUN apk add \
@@ -39,6 +39,7 @@ COPY poetry.lock .
 COPY pyproject.toml .
 
 RUN curl -sSL https://install.python-poetry.org | python - && \
+    /root/.local/bin/poetry self add poetry-plugin-export && \
     /root/.local/bin/poetry export -f requirements.txt --output requirements.txt --without-hashes --with azure,logger,excel,web,database,proposal && \
     rm -rf poetry.lock pyproject.toml && \
     python -m pip install --upgrade -r requirements.txt && \
