@@ -109,7 +109,7 @@ pytest-asyncio = "^0.25"
 [tool.poetry.group.publish.dependencies]
 keyring = "25.*"
 artifacts-keyring = "0.4.*"
-twine = "^6.0.1"
+twine = "*"
 
 
 [tool.poetry.group.others.dependencies]
